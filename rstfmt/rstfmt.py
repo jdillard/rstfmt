@@ -276,12 +276,10 @@ class IgnoreMessagesReporter(docutils.utils.Reporter):
     ) -> docutils.nodes.system_message:
         orig_level = self.halt_level  # type: ignore
         res = re.search(self.ignored_messages_regex, message)
-        print(res)
 
         # TODO: Add support for sphinx directives after fix
         # https://github.com/twolfson/restructuredtext-lint/issues/29
         if res or message in self.ignored_messages:
-            print(docutils.utils.Reporter.SEVERE_LEVEL + 1)
             self.halt_level = docutils.utils.Reporter.SEVERE_LEVEL + 1
         else:
             print(message)
@@ -472,6 +470,7 @@ class Formatters:
 
     @staticmethod
     def directive(node: docutils.nodes.Node, ctx: FormatContext) -> line_iterator:
+        print(docutils.nodes.Node)
         d = node.attributes["directive"]
         yield " ".join(chain([[f".. {d.name}::"], chain(a.split() for a in d.arguments)]))
         # Just rely on the order being stable, hopefully.
