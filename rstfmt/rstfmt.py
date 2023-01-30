@@ -736,7 +736,7 @@ class Formatters:
 
 def fmt(node: docutils.nodes.Node, ctx: FormatContext) -> Iterator[str]:
     print(type(node).__name__)
-    print(node.__dict__)
+    print(node.__attributes__)
     print(node)
     try:
         func = getattr(Formatters, type(node).__name__)
