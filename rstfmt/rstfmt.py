@@ -736,6 +736,8 @@ def fmt(node: docutils.nodes.Node, ctx: FormatContext) -> Iterator[str]:
     try:
         func = getattr(Formatters, type(node).__name__)
     except AttributeError:
+        print(type(node), docutils.nodes.problematic)
+        print(inline_markup(node.rawsource))
         if type(node) == docutils.nodes.problematic:
             return [inline_markup(node.rawsource),]
         raise ValueError(f"Unknown node type {type(node).__name__}!")
