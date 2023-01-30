@@ -265,6 +265,8 @@ class IgnoreMessagesReporter(docutils.utils.Reporter):
         "Title underline too short.",
     }
     ignored_messages_regex = (
+        r'No directive entry for "([\w|\-|:]+)"|'
+        r'Unknown directive type "([\w|\-|:]+)"|'
         r'No role entry for "([\w|\-|:]+)"|'
         r'Unknown interpreted text role "([\w|\-|:]+)"'
     )
