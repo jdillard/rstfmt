@@ -246,6 +246,7 @@ def preproc(node: docutils.nodes.Node) -> None:
 
     # Recurse.
     for c in node.children:
+        print(c)
         preproc(c)
 
 
