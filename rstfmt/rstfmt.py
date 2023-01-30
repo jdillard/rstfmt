@@ -246,7 +246,6 @@ def preproc(node: docutils.nodes.Node) -> None:
 
     # Recurse.
     for c in node.children:
-        print(c)
         preproc(c)
 
 
@@ -471,8 +470,8 @@ class Formatters:
 
     @staticmethod
     def directive(node: docutils.nodes.Node, ctx: FormatContext) -> line_iterator:
-        print(docutils.nodes.Node)
         d = node.attributes["directive"]
+        print(d)
         yield " ".join(chain([[f".. {d.name}::"], chain(a.split() for a in d.arguments)]))
         # Just rely on the order being stable, hopefully.
         for k, v in d.options.items():
