@@ -655,6 +655,7 @@ class Formatters:
 
     @staticmethod
     def role(node: docutils.nodes.Node, ctx: FormatContext) -> inline_iterator:
+        print(node)
         yield inline_markup(f":{node.attributes['role']}:`{node.attributes['text']}`")
 
     @staticmethod
