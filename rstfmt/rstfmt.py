@@ -276,10 +276,12 @@ class IgnoreMessagesReporter(docutils.utils.Reporter):
     ) -> docutils.nodes.system_message:
         orig_level = self.halt_level  # type: ignore
         res = re.search(self.ignored_messages_regex, message)
+        print(res)
 
         # TODO: Add support for sphinx directives after fix
         # https://github.com/twolfson/restructuredtext-lint/issues/29
         if res or message in self.ignored_messages:
+            print(docutils.utils.Reporter.SEVERE_LEVEL + 1)
             self.halt_level = docutils.utils.Reporter.SEVERE_LEVEL + 1
         else:
             print(message)
